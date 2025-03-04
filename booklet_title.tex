@@ -1,7 +1,7 @@
 % titlepages.tex
 
 \begin{titlepage}
-	
+	\thispagestyle{empty}
 %	\begin{figure}[b!]
 %		\centering
 %		\centerline{\includegraphics[width=0.75\linewidth]{WIP}}
@@ -27,14 +27,14 @@
 \end{adjustbox}	
 
 \end{titlepage}
-
+\thispagestyle{empty}
 \begin{titlepage}
 		\csvreader[no head, head to column names, /csv/separator=semicolon]{booklet_title.csv}{1=\Property,2=\Value}{
 		\centering
 		\IfEq{\Property}{Title}{\Large\Value}{}\\
 		\vspace{0.5 cm}
 		\IfEq{\Property}{Location}{\large \textbf{\Value}}{}\\
-		\IfEq{\Property}{Version}{\large Version \Value}{}\\
+		%\IfEq{\Property}{Version}{\large Version \Value}{}\\
 		\IfEq{\Property}{Responsible}{Principal Investigator: \large \Value}{}\\
 		\IfEq{\Property}{Team}{Team: \large \Value}{}\\
 		\IfEq{\Property}{Contact}{Contact: \large \Value}{}\\

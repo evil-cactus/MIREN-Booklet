@@ -2,8 +2,10 @@
 \usepackage{geometry}
 \usepackage{csvsimple}
 \usepackage{graphicx}
+\usepackage{multicol}
 \usepackage{zref-savepos}
 \usepackage[latin9]{inputenc}
+\usepackage{supertabular}
 \geometry{a5paper, inner=2cm, outer=1.5cm, top=1cm, bottom=1cm}
 \usepackage{xstring}
 \usepackage[T1]{fontenc}
@@ -12,13 +14,15 @@
 \usepackage{adjustbox}
 \usepackage{ifthen}
 \usepackage{titleps}
+\usepackage{everypage}
 \usepackage{marginnote}
-\usepackage{xcolor}
+%\usepackage{xcolor}
 \setlength{\parindent}{0pt}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{fp}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{minitoc}
 %page numbering 
 \usepackage{fancyhdr} %page numbering 
 \pagestyle{fancy}
@@ -33,7 +37,7 @@
 	\section*{#1}
 	\StrSubstitute{#2}{}{_}[\Temp]
 	\label{\Temp}
-	\addcontentsline{toc}{section}{#1}
+	\addcontentsline{toc}{section}{#2}
 }
 
 \newcommand*{\hiddensection}[2]{
@@ -42,6 +46,31 @@
 	\label{\Temp}
 	\addcontentsline{toc}{section}{#1}
 }
+
+
+% Trick supercols
+\makeatletter
+\let\mcnewpage=\newpage
+\newcommand{\TrickSupertabularIntoMulticols}{%
+\renewcommand\newpage{%
+    \if@firstcolumn%
+        \hrule width\linewidth height0pt%
+            \columnbreak%
+        \else%
+          \mcnewpage%
+        \fi%
+}%
+}
+\makeatother
+
+
+%% New command for register TOC
+%\newcommand*{\addtoregister}[2]{
+%	%\section*{}
+%	\StrSubstitute{#2}{}{_}[\Temp]
+%	\label{\Temp}
+%	\addcontentsline{toc}{subsection}{#2}
+%}
 
 % Create new command to get page reference for each species for TOC
 \newcommand*{\pagerefname}[1]{
@@ -87,14 +116,30 @@
 }
 
 
+% Custom page layout to split A4 into two "pages"
+\newcommand{\splitPage}{%
+    \AddEverypageHook{%
+        \ifodd\value{page} % For odd pages (left half)
+            \pdfpagewidth=74mm % Half of A5 width
+            \pdfpageheight=210mm % Full A5 height
+        \else % For even pages (right half)
+            \pdfpagewidth=74mm
+            \pdfpageheight=210mm
+        \fi
+    }
+
+}
+
 % Document begins here
 \begin{document}
 	\input{booklet_title.tex}
-	\newpage
+	\thispagestyle{empty}
+	\clearpage
+	\pagenumbering{arabic}
 	
-	\section*{Species organised by plant family}
 
 	% Table of contents
+	\section*{Species organised by plant family}
     \begin{longtable}{|@{}p{0pt}@{}|>{\raggedright\arraybackslash}p{.35\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.3\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|@{}p{0pt}@{}|}
     \hline
     \ &
@@ -199,10 +244,24 @@
                 keepaspectratio
             ]{Images/\FileName}}
             \vspace{0.1cm}
-        %\end{figure}
-        %\end{minipage}
+
          \hfill
     \end{adjustbox}
 }
+
+% Species register
+\newpage
+\section*{Plant register}
+
+\begin{multicols*}{2}
+\TrickSupertabularIntoMulticols
+\begin{supertabular}{ll}
+\csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{ 
+	 \footnotesize{\emph{\Species}} &
+	 \footnotesize{\pagerefname{\Species}} \tabularnewline
+	  } 
+\end{supertabular}
+
+\end{multicols*}
 
 \end{document}
