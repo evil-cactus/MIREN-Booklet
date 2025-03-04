@@ -30,7 +30,10 @@
 \fancyfoot[LE,RO]{\vspace{-0.5cm}\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
-%\fancyhead[LE,RO]{\Location} %Add location 
+% Dot fill
+\usepackage{calc}
+\newlength{\mylength}
+\setlength{\mylength}{\hsize-2\tabcolsep-4\arrayrulewidth}
 
 % Create new commands for table of contents
 \newcommand*{\nsection}[2]{
@@ -63,14 +66,6 @@
 }
 \makeatother
 
-
-%% New command for register TOC
-%\newcommand*{\addtoregister}[2]{
-%	%\section*{}
-%	\StrSubstitute{#2}{}{_}[\Temp]
-%	\label{\Temp}
-%	\addcontentsline{toc}{subsection}{#2}
-%}
 
 % Create new command to get page reference for each species for TOC
 \newcommand*{\pagerefname}[1]{
@@ -251,17 +246,18 @@
 
 % Species register
 \newpage
-\section*{Plant register}
+\section*{Species register}
 
-\begin{multicols*}{2}
+\begin{multicols}{2}
 \TrickSupertabularIntoMulticols
-\begin{supertabular}{ll}
-\csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{ 
-	 \footnotesize{\emph{\Species}} &
-	 \footnotesize{\pagerefname{\Species}} \tabularnewline
-	  } 
+\begin{supertabular}{>{\raggedright\arraybackslash}p{0.4\textwidth} >{\raggedright\arraybackslash}p{0.08\textwidth}}
+\csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{
+    \footnotesize{\emph{\Species}}\dotfill & 
+    \footnotesize{\pagerefname{\Species}} \tabularnewline
+}
 \end{supertabular}
 
-\end{multicols*}
+
+\end{multicols}
 
 \end{document}
