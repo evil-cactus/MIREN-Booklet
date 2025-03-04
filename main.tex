@@ -1,0 +1,182 @@
+\documentclass[a5paper,8pt,twoside]{book}
+\usepackage{geometry}
+\usepackage{csvsimple}
+\usepackage{graphicx}
+\usepackage[latin9]{inputenc}
+\geometry{a5paper, inner=2cm, outer=1.5cm, top=1cm, bottom=1cm}
+\usepackage{xstring}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{ifthen}
+\usepackage{titleps}
+\usepackage{marginnote}
+\usepackage{xcolor}
+\setlength{\parindent}{0pt}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{fp}
+
+%page numbering 
+\usepackage{fancyhdr} %page numbering 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[LE,RO]{\vspace{-0.5cm}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+%\fancyhead[LE,RO]{\Location} %Add location 
+
+% Create new commands for table of contents
+\newcommand*{\nsection}[2]{
+	\section*{#1}
+	\StrSubstitute{#2}{ }{_}[\Temp]
+	\label{\Temp}
+	\addcontentsline{toc}{section}{#1}
+}
+
+\newcommand*{\hiddensection}[2]{
+	%\section*{}
+	\StrSubstitute{#2}{ }{_}[\Temp]
+	\label{\Temp}
+	\addcontentsline{toc}{section}{#1}
+}
+
+% Create new command to get page reference for each species for TOC
+\newcommand*{\pagerefname}[1]{
+	 \StrSubstitute{#1}{ }{_}[\TempName]
+	 \pageref{\TempName} 
+ }
+% Create new command to handle empty cells
+\newcommand{\ifnotempty}[3]{%
+    \IfSubStr{#1}{#2}{#3}{}%
+}
+
+% Create new default height and width
+\newcommand{\defaultheight}{\0.5\textheight}
+
+% Center wide figures
+\makeatletter
+
+\newcommand*{\centerfloat}{%
+  \parindent \z@
+  \leftskip \z@ \@plus 1fil \@minus \textwidth
+  \rightskip\leftskip
+  \parfillskip \z@skip}
+\makeatother
+
+% Document begins here
+\begin{document}
+	\input{booklet_title.tex}
+	\newpage
+	
+	\section*{Species organised by plant family}
+
+	% Table of contents
+    \begin{longtable}{|>{\raggedright\arraybackslash}p{.35\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.3\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|}
+    \hline
+    \footnotesize \bfseries Species &
+    \footnotesize \bfseries Family &
+    \footnotesize \bfseries Local name &
+    \footnotesize \bfseries Page \\
+    \hline
+    \csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{species_list.csv}{}{
+        \footnotesize{\Species} & 
+        \footnotesize{\Family} & 
+        \footnotesize{\LocalName} & 
+        \footnotesize{\pagerefname{\Species}} \\
+        \hline
+    }
+\end{longtable}
+
+
+	% TOC for special pages
+%	\newboolean{SpecialTOC}
+%	\csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{special_pages.csv}{}{
+%	\IfStrEq{\TOCTitle}{}{\setboolean{SpecialTOC}{false}}{\section*{\TOCTitle}}
+%	\setboolean{SpecialTOC}{true}
+%}		
+%     \ifstrequal{SpecialTOC}{no}{}{
+%        \begin{longtable}{|>{\raggedright\arraybackslash}p{.35\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.3\textwidth}|>{\raggedright\arraybackslash}p{.09\textwidth}|}
+%    \hline
+%    \footnotesize \bfseries Species &
+%    \footnotesize \bfseries Family &
+%    \footnotesize \bfseries Local name &
+%    \footnotesize \bfseries Page \\
+%    \hline
+%    \csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{special_pages.csv}{}{
+%        \IfStrEq{\ColD}{}{ % Skip rows where ColD is empty
+%        }{%
+%            \footnotesize{\ColD} & 
+%            \footnotesize{\ColE} & 
+%            \footnotesize{\ColF} & 
+%            \footnotesize{\pagerefname{\ColD}} \\
+%            \hline
+%        }
+%    }
+%\end{longtable}
+%
+%}
+
+
+	\newpage
+	
+	% Iterate over species_list.csv 
+	\csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{species_list.csv}{}{
+
+	\IfStrEq{\FigOneWidth}{}{\renewcommand{\WidthOne}{0.5\textwidth}}{\renewcommand{\WidthOne}{\FigOneWidth\textwidth}}
+	\IfStrEq{\FigTwoWidth}{}{\renewcommand{\WidthTwo}{0.5\textwidth}}{\renewcommand{\WidthTwo}{\FigTwoWidth\textwidth}}
+	
+    \begin{adjustbox}{minipage=[t][0.48\textheight][t]{\textwidth}}
+    	       
+        \nsection{\emph{\Species} (\Family) \footnotesize{\emph{\Author}}}{\Species}
+        \raisebox{\dimexpr\topskip-\height}{\marginnote{\textcolor{\LocationColour}{\textbf{\Location}}}}
+         
+            \vspace{-0.7cm}
+            \ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}}\\}
+            \footnotesize{\Comments}\\       
+            
+        \vfill
+    \begin{adjustbox}{minipage=[t][\dimexpr\textheight-0.48\textheight-em][t]{\textwidth}}
+    	\begin{minipage}{\WidthOne}
+            \includegraphics[
+            height=\dimexpr\textheight-\ht\strutbox\relax, 
+            width=0.9\textwidth, 
+            keepaspectratio]{Images/\FileNamePhoto}
+        \end{minipage}
+       	 \hfill       	 
+        \begin{minipage}{\WidthTwo}
+            \includegraphics[
+            height=\dimexpr\textheight-\ht\strutbox\relax, 
+            width=0.9\textwidth, 
+            keepaspectratio]{Images/\FileNameID}
+        \end{minipage}
+    \end{adjustbox}
+   	 \vfill
+    \end{adjustbox}
+    \vspace{0.1cm}
+}
+
+% Iterate over special_pages.csv
+
+\clearpage
+\csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{special_pages.csv}{}{
+\IfStrEq{\MaxHeight}{0.5}{\renewcommand{\SpecialHeight}{0.49\textheight}}{\renewcommand{\SpecialHeight}{\MaxHeight\textheight}}
+	\centerfloat
+    \begin{adjustbox}{minipage=[t][\SpecialHeight][t]{\MaxWidth\textwidth}}
+    \IfStrEq{\detokenize{\ColD}}{}{}{
+    }{\hiddensection{\ColD}{\ColD}}
+
+               \makebox[\textwidth][c]{\includegraphics[
+                height=\SpecialHeight,
+                width=\MaxWidth\textwidth,
+                keepaspectratio
+            ]{Images/\FileName}}
+            \vspace{0.1cm}
+        %\end{figure}
+        %\end{minipage}
+         \hfill
+    \end{adjustbox}
+}
+
+\end{document}
