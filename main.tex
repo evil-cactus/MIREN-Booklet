@@ -2,6 +2,7 @@
 \usepackage{geometry}
 \usepackage{csvsimple}
 \usepackage{graphicx}
+\usepackage{zref-savepos}
 \usepackage[latin9]{inputenc}
 \geometry{a5paper, inner=2cm, outer=1.5cm, top=1cm, bottom=1cm}
 \usepackage{xstring}
@@ -17,7 +18,7 @@
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{fp}
-
+\usepackage[dvipsnames]{xcolor}
 %page numbering 
 \usepackage{fancyhdr} %page numbering 
 \pagestyle{fancy}
@@ -30,21 +31,21 @@
 % Create new commands for table of contents
 \newcommand*{\nsection}[2]{
 	\section*{#1}
-	\StrSubstitute{#2}{ }{_}[\Temp]
+	\StrSubstitute{#2}{}{_}[\Temp]
 	\label{\Temp}
 	\addcontentsline{toc}{section}{#1}
 }
 
 \newcommand*{\hiddensection}[2]{
 	%\section*{}
-	\StrSubstitute{#2}{ }{_}[\Temp]
+	\StrSubstitute{#2}{}{_}[\Temp]
 	\label{\Temp}
 	\addcontentsline{toc}{section}{#1}
 }
 
 % Create new command to get page reference for each species for TOC
 \newcommand*{\pagerefname}[1]{
-	 \StrSubstitute{#1}{ }{_}[\TempName]
+	 \StrSubstitute{#1}{}{_}[\TempName]
 	 \pageref{\TempName} 
  }
 % Create new command to handle empty cells
@@ -65,6 +66,27 @@
   \parfillskip \z@skip}
 \makeatother
 
+% Trim spaces
+\newcommand{\trimspaces}[1]{\StrTrim{#1}{\mytemp}\mytemp}
+
+% Fill page w graphic
+\newcommand{\filltopageendgraphics}[2][]{%
+  \par
+  \zsaveposy{top-\thepage}% Mark the top of the page
+  \vfill
+  \zsaveposy{bottom-\thepage}% Mark the bottom of the page
+  \smash{%
+    \includegraphics[
+      height=\dimexpr\zposy{top-\thepage}sp-\zposy{bottom-\thepage}sp\relax,
+      width=\textwidth,
+      keepaspectratio,
+      #1
+    ]{#2}%
+  }%
+  \par
+}
+
+
 % Document begins here
 \begin{document}
 	\input{booklet_title.tex}
@@ -73,18 +95,22 @@
 	\section*{Species organised by plant family}
 
 	% Table of contents
-    \begin{longtable}{|>{\raggedright\arraybackslash}p{.35\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.3\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|}
+    \begin{longtable}{|@{}p{0pt}@{}|>{\raggedright\arraybackslash}p{.35\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.3\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|@{}p{0pt}@{}|}
     \hline
+    \ &
     \footnotesize \bfseries Species &
     \footnotesize \bfseries Family &
     \footnotesize \bfseries Local name &
-    \footnotesize \bfseries Page \\
+    \footnotesize \bfseries Page &
+    \ \\
     \hline
-    \csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{species_list.csv}{}{
+    \csvreader[head to column names, /csv/separator=semicolon]{species_list.csv}{}{
+    	\ &
         \footnotesize{\Species} & 
         \footnotesize{\Family} & 
         \footnotesize{\LocalName} & 
-        \footnotesize{\pagerefname{\Species}} \\
+        \footnotesize{\pagerefname{\Species}} &
+        \ \\
         \hline
     }
 \end{longtable}
@@ -122,7 +148,7 @@
 	\newpage
 	
 	% Iterate over species_list.csv 
-	\csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{species_list.csv}{}{
+	\csvreader[head to column names, /csv/separator=semicolon]{species_list.csv}{}{
 
 	\IfStrEq{\FigOneWidth}{}{\renewcommand{\WidthOne}{0.5\textwidth}}{\renewcommand{\WidthOne}{\FigOneWidth\textwidth}}
 	\IfStrEq{\FigTwoWidth}{}{\renewcommand{\WidthTwo}{0.5\textwidth}}{\renewcommand{\WidthTwo}{\FigTwoWidth\textwidth}}

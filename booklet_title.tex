@@ -6,9 +6,9 @@
 %		\centering
 %		\centerline{\includegraphics[width=0.75\linewidth]{WIP}}
 %	\end{figure}
-
-	\includegraphics[width=0.25\linewidth]{Logos/dist_eco} \qquad
-	\includegraphics[width=0.25\linewidth]{Logos/biogeo} \qquad
+\begin{adjustbox}{minipage=[t][0.48\textheight][t]{\textwidth}}
+	\includegraphics[width=0.25\linewidth]{Logos/dist_eco} \hspace{5cm}
+	%\includegraphics[width=0.25\linewidth]{Logos/biogeo} \qquad
 	\includegraphics[width=0.25\linewidth]{Logos/Uni_Bayreuth}
 	\vspace{1.5cm}
 		
@@ -16,8 +16,15 @@
 		\centering
 		\IfEq{\Property}{Title}{\Huge\bfseries \Value}{}\\
 		\vspace{0.5 cm}
-		\IfEq{\Property}{Location}{\Huge \emph{\Value}}{}\\
-        }		
+		\IfEq{\Property}{Location}{\Huge \emph{\Value}}{}
+        }	
+\end{adjustbox}	
+\begin{adjustbox}{minipage=[t][0.48\textheight][t]{\textwidth}}
+	\csvreader[no head, head to column names, /csv/separator=semicolon]{booklet_title.csv}{1=\Property,2=\Value}{
+		\centering
+		\IfEq{\Property}{TitleFig}{\filltopageendgraphics[width=\linewidth]{Images/\Value}}{}
+        }	
+\end{adjustbox}	
 
 \end{titlepage}
 
@@ -28,9 +35,15 @@
 		\vspace{0.5 cm}
 		\IfEq{\Property}{Location}{\large \textbf{\Value}}{}\\
 		\IfEq{\Property}{Version}{\large Version \Value}{}\\
-		\IfEq{\Property}{Author}{Authors: \large \Value}{}\\
-		\IfEq{\Property}{Responsible}{Responsible: \large \Value}{}\\
+		\IfEq{\Property}{Responsible}{Principal Investigator: \large \Value}{}\\
+		\IfEq{\Property}{Team}{Team: \large \Value}{}\\
 		\IfEq{\Property}{Contact}{Contact: \large \Value}{}\\
-		\IfEq{\Property}{Date}{\large \Value\par\vfill}{}
+		\IfEq{\Property}{Date}{\large \Value\par\vfill}{} \\
+		
+		\IfEq{\Property}{Source1}{\raggedright \small Sources: \\ \Value}{}
+		\IfEq{\Property}{Source2}{\raggedright \vspace{-0.5cm}\small\Value}{}
+		\IfEq{\Property}{Source3}{\small \Value}{}
+		\IfEq{\Property}{Source4}{\small \Value}{}
+			
 	}
 \end{titlepage}
