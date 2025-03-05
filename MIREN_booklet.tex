@@ -144,7 +144,7 @@
     \footnotesize \bfseries Page &
     \ \\
     \hline
-    \csvreader[head to column names, /csv/separator=semicolon]{species_list.csv}{}{
+    \csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{
     	\ &
         \footnotesize{\emph{\Species}} & 
         \footnotesize{\Family} & 
@@ -245,19 +245,19 @@
 }
 
 % Species register
-\newpage
-\section*{Species register}
-
-\begin{multicols}{2}
-\TrickSupertabularIntoMulticols
-\begin{supertabular}{>{\raggedright\arraybackslash}p{0.4\textwidth} >{\raggedright\arraybackslash}p{0.06\textwidth}}
-\csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{
-    \footnotesize{\emph{\Species}}\dotfill & 
-    \footnotesize{\pagerefname{\Species}} \tabularnewline
-}
-\end{supertabular}
-
-
-\end{multicols}
+%\newpage
+%\section*{Species register}
+%
+%\begin{multicols}{2}
+%\TrickSupertabularIntoMulticols
+%\begin{supertabular}{>{\raggedright\arraybackslash}p{0.4\textwidth} >{\raggedright\arraybackslash}p{0.06\textwidth}}
+%\csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{
+%    \footnotesize{\emph{\Species}}\dotfill & 
+%    \footnotesize{\pagerefname{\Species}} \tabularnewline
+%}
+%\end{supertabular}
+%
+%
+%\end{multicols}
 
 \end{document}
