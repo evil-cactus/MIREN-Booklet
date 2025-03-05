@@ -15,6 +15,7 @@
 \usepackage{ifthen}
 \usepackage{titleps}
 \usepackage{everypage}
+\usepackage{pgfplotstable}
 \usepackage{marginnote}
 %\usepackage{xcolor}
 \setlength{\parindent}{0pt}
@@ -65,6 +66,15 @@
 }%
 }
 \makeatother
+
+% Custom macro to sort and display CSV content
+\newcommand{\sortCSV}[2]{
+    % #1: Input CSV file
+    % #2: Column index to sort by
+    \pgfplotstablesort[col=#2]{\sortedtable}{#1} % Sorting
+    \pgfplotstabletypeset{\sortedtable} % Displaying sorted table
+}
+
 
 
 % Create new command to get page reference for each species for TOC
