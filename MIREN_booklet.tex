@@ -50,7 +50,6 @@
 	\addcontentsline{toc}{section}{#1}
 }
 
-
 % Trick supercols
 \makeatletter
 \let\mcnewpage=\newpage
@@ -74,7 +73,14 @@
  }
 % Create new command to handle empty cells
 \newcommand{\ifnotempty}[3]{%
-    \IfSubStr{#1}{#2}{#3}{}%
+    \begingroup
+    \edef\tempcontent{#1}% Store content in a temporary macro
+    \ifx\tempcontent\empty
+        #2% Code to execute if #1 is empty
+    \else
+        #3% Code to execute if #1 is not empty
+    \fi
+    \endgroup
 }
 
 % Create new default height and width
@@ -93,7 +99,6 @@
 % Trim spaces
 \newcommand{\trimspaces}[1]{\StrTrim{#1}{\mytemp}\mytemp}
 
-% Fill page w graphic
 \newcommand{\filltopageendgraphics}[2][]{%
   \par
   \zsaveposy{top-\thepage}% Mark the top of the page
@@ -111,19 +116,6 @@
 }
 
 
-% Custom page layout to split A4 into two "pages"
-\newcommand{\splitPage}{%
-    \AddEverypageHook{%
-        \ifodd\value{page} % For odd pages (left half)
-            \pdfpagewidth=74mm % Half of A5 width
-            \pdfpageheight=210mm % Full A5 height
-        \else % For even pages (right half)
-            \pdfpagewidth=74mm
-            \pdfpageheight=210mm
-        \fi
-    }
-
-}
 
 % Document begins here
 \begin{document}
@@ -155,36 +147,6 @@
     }
 \end{longtable}
 
-
-	% TOC for special pages
-%	\newboolean{SpecialTOC}
-%	\csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{special_pages.csv}{}{
-%	\IfStrEq{\TOCTitle}{}{\setboolean{SpecialTOC}{false}}{\section*{\TOCTitle}}
-%	\setboolean{SpecialTOC}{true}
-%}		
-%     \ifstrequal{SpecialTOC}{no}{}{
-%        \begin{longtable}{|>{\raggedright\arraybackslash}p{.35\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.3\textwidth}|>{\raggedright\arraybackslash}p{.09\textwidth}|}
-%    \hline
-%    \footnotesize \bfseries Species &
-%    \footnotesize \bfseries Family &
-%    \footnotesize \bfseries Local name &
-%    \footnotesize \bfseries Page \\
-%    \hline
-%    \csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{special_pages.csv}{}{
-%        \IfStrEq{\ColD}{}{ % Skip rows where ColD is empty
-%        }{%
-%            \footnotesize{\ColD} & 
-%            \footnotesize{\ColE} & 
-%            \footnotesize{\ColF} & 
-%            \footnotesize{\pagerefname{\ColD}} \\
-%            \hline
-%        }
-%    }
-%\end{longtable}
-%
-%}
-
-
 	\newpage
 	
 	% Iterate over species_list.csv 
@@ -199,8 +161,8 @@
         \raisebox{\dimexpr\topskip-\height}{\marginnote{\textcolor{\LocationColour}{\textbf{\Location}}}}
          
             \vspace{-0.7cm}
-            \ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}}\\}
-            \footnotesize{\Comments}\\       
+            \ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}} \vspace{0.2cm}}
+            \ifnotempty{\Comments}{\small{\Comments}}  
             
         \vfill
     \begin{adjustbox}{minipage=[t][\dimexpr\textheight-0.48\textheight-em][t]{\textwidth}}
