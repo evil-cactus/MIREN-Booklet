@@ -120,8 +120,10 @@
 % Document begins here
 \begin{document}
 	\input{booklet_title.tex}
-	%\thispagestyle{empty}
+	
+	\thispagestyle{empty}
 	\cleardoublepage
+	
 	%\clearpage
 	\pagenumbering{arabic}	
 
@@ -165,17 +167,20 @@
             \ifnotempty{\Comments}{}{\small{\Comments}}  
             
         \vfill
-    \begin{adjustbox}{minipage=[t][\dimexpr\textheight-0.48\textheight-em][t]{\textwidth}}
+        \newcommand{\customheight}{\dimexpr\textheight-0.48\textheight-1em\relax}
+    \begin{adjustbox}{minipage=[t][\customheight][t]{\textwidth}}
     	\begin{minipage}{\WidthOne}
+    		\centering
             \includegraphics[
-            height=\dimexpr\textheight-\ht\strutbox\relax, 
+            height=0.9\customheight, 
             width=0.9\textwidth, 
             keepaspectratio]{Images/\FileNamePhoto}
         \end{minipage}
        	 \hfill       	 
         \begin{minipage}{\WidthTwo}
+        	\centering
             \includegraphics[
-            height=\dimexpr\textheight-\ht\strutbox\relax, 
+            height=0.9\customheight, 
             width=0.9\textwidth, 
             keepaspectratio]{Images/\FileNameID}
         \end{minipage}
