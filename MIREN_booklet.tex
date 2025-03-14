@@ -1,4 +1,4 @@
-\documentclass[a5paper,8pt,twoside]{book}
+\documentclass[a5paper,10pt,twoside]{book}
 \usepackage{geometry}
 \usepackage{csvsimple}
 \usepackage{graphicx}
@@ -6,7 +6,7 @@
 \usepackage{zref-savepos}
 \usepackage[latin9]{inputenc}
 \usepackage{supertabular}
-\geometry{a5paper, inner=2cm, outer=1.5cm, top=1cm, bottom=1cm}
+\geometry{a5paper, inner=1.5cm, outer=0.3cm, top=1.2cm, bottom=1.2cm}
 \usepackage{xstring}
 \usepackage[T1]{fontenc}
 \usepackage{charter}
@@ -29,6 +29,7 @@
 \fancyhf{}
 \fancyfoot[LE,RO]{\vspace{-0.5cm}\thepage}
 \renewcommand{\headrulewidth}{0pt}
+
 
 % Dot fill
 \usepackage{calc}
@@ -71,17 +72,28 @@
 	 \StrSubstitute{#1}{}{_}[\TempName]
 	 \pageref{\TempName} 
  }
+
+	 
 % Create new command to handle empty cells
 \newcommand{\ifnotempty}[3]{%
-    \begingroup
-    \edef\tempcontent{#1}% Store content in a temporary macro
-    \ifx\tempcontent\empty
-        #2% Code to execute if #1 is empty
+    \edef\tempcontent{#1}% Fully expand #1 and store it in \tempcontent
+    \ifx\tempcontent\empty% Compare \tempcontent with \empty
+        \expandafter\expandafter\expandafter#2% Execute #2 (empty case)
     \else
-        #3% Code to execute if #1 is not empty
+        \expandafter\expandafter\expandafter#3% Execute #3 (non-empty case)
     \fi
-    \endgroup
 }
+
+%\newcommand{\ifnotempty}[3]{%
+%    \begingroup
+%    \edef\tempcontent{#1}% Store content in a temporary macro
+%    \ifx\tempcontent\empty
+%        #2% Code to execute if #1 is empty
+%    \else
+%        #3% Code to execute if #1 is not empty
+%    \fi
+%    \endgroup
+%}
 
 % Create new default height and width
 \newcommand{\defaultheight}{\0.5\textheight}
@@ -151,26 +163,37 @@
 
 	\newpage
 	
-	% Iterate over species_list.csv 
+	% Iterate over species_list.csv 	 
+	 
 	\csvreader[head to column names, /csv/separator=semicolon]{species_list.csv}{}{
+	
+	 \newcommand{\customheight}{}
+	 \newlength{\heightone} % Define \heightone as a length
+	 \newlength{\heighttwo} % Define \heighttwo as a length
 
 	\IfStrEq{\FigOneWidth}{}{\renewcommand{\WidthOne}{0.5\textwidth}}{\renewcommand{\WidthOne}{\FigOneWidth\textwidth}}
 	\IfStrEq{\FigTwoWidth}{}{\renewcommand{\WidthTwo}{0.5\textwidth}}{\renewcommand{\WidthTwo}{\FigTwoWidth\textwidth}}
 	
     \begin{adjustbox}{valign=m, minipage=[t][0.48\textheight][t]{\textwidth}}
     	       
-        \raggedright\nsection{\emph{\Species} (\Family) \footnotesize{\emph{\Author}}}{\Species}
+        \raggedright\nsection{\emph{\large{\Species}} (\emph{\large{\Family}}) \footnotesize{\Author}}{\Species}
         \raisebox{\dimexpr\topskip-\height}{\marginnote{\textcolor{\LocationColour}{\textbf{\Location}}}}
          
-            \vspace{-0.7cm}
+            \vspace{-0.8cm}
+            
             \ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}} \vspace{0.2cm}}
-            \ifnotempty{\Comments}{}{\small{\Comments}\vspace{0.2cm}}
+            \ifnotempty{\Comments}{}{\footnotesize{\Comments}\vspace{0.2cm}}
+            
+            \ifnotempty{\Synonyms}{\setlength{\heightone}{0pt}}{\setlength{\heightone}{1em}}
+            \ifnotempty{\Comments}{\setlength{\heighttwo}{0pt}}{\setlength{\heighttwo}{1em}}
+            
             
         \vfill
-        \newcommand{\customheight}{\dimexpr\textheight-0.48\textheight-1em\relax}
+        \renewcommand{\customheight}{\dimexpr\textheight-0.48\textheight-1em-\heightone-\heighttwo\relax}
     \begin{adjustbox}{minipage=[t][\customheight][t]{\textwidth}}
     	\begin{minipage}{\WidthOne}
     		\centering
+    		\vspace{0.1cm}
             \includegraphics[
             height=0.9\customheight, 
             width=0.9\textwidth, 
@@ -179,6 +202,7 @@
        	 \hfill       	 
         \begin{minipage}{\WidthTwo}
         	\centering
+        	\vspace{0.1cm}
             \includegraphics[
             height=0.9\customheight, 
             width=0.9\textwidth, 
