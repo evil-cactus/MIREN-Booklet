@@ -17,7 +17,7 @@
 \usepackage{everypage}
 \usepackage{marginnote}
 %\usepackage{xcolor}
-\setlength{\parindent}{0pt}
+C\setlength{\parindent}{0pt}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{fp}
@@ -134,7 +134,7 @@
 	\input{booklet_title.tex}
 	
 	\thispagestyle{empty}
-	\cleardoublepage
+	%\cleardoublepage
 	
 	%\clearpage
 	\pagenumbering{arabic}	
@@ -152,12 +152,35 @@
     \hline
     \csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{
     	\ &
-        \footnotesize{\emph{\Species}} & 
+        \footnotesize{\emph{\SpeciesDisplayed}} & 
         \footnotesize{\emph{\Family}} & 
         \footnotesize{\LocalName} & 
-        \footnotesize{\pagerefname{\Species}} &
+        \footnotesize{\pagerefname{\SpeciesOfficial}} &
         \ \\
         \hline
+    }
+\end{longtable}
+
+% Synonyms table
+\subsection*{Synonyms}
+\begin{longtable}{|@{}p{0pt}@{}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|@{}p{0pt}@{}|}
+    \hline
+    \ &
+    \footnotesize \bfseries Synonym &
+    \footnotesize \bfseries Official name &
+    \footnotesize \bfseries Family &
+    \footnotesize \bfseries Page &
+    \ \\
+    \hline
+    \csvreader[head to column names, /csv/separator=semicolon]{synonyms_list.csv}{}{
+    	%\ifnotempty{\Synonyms}{}{
+    	\ &
+        \footnotesize{\emph{\Synonyms}} & 
+        \footnotesize{\emph{\Species}} & 
+        \footnotesize{\Family} & 
+        \footnotesize{\pagerefname{\Species}} &
+        \ \\
+        \hline%}
     }
 \end{longtable}
 
@@ -176,7 +199,7 @@
 	
     \begin{adjustbox}{valign=m, minipage=[t][0.48\textheight][t]{\textwidth}}
     	       
-        \raggedright\nsection{\emph{\large{\Species}} (\emph{\large{\Family}}) \footnotesize{\Author}}{\Species}
+        \raggedright\nsection{\emph{\large{\Species}} \emph{\large{(\Family)}} \footnotesize{\Author}}{\Species}
         \raisebox{\dimexpr\topskip-\height}{\marginnote{\textcolor{\LocationColour}{\textbf{\Location}}}}
          
             \vspace{-0.8cm}

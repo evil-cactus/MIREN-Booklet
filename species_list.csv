@@ -33,7 +33,6 @@ Asteraceae;Lactuca perennis;L.;;Blauer Lattich;Lactuca_perennis_1.jpg;Lactuca_pe
 Asteraceae;Leontodon incanus;(L.) Schrank;;Grauer Löwenzahn;Leontodon_incanus_1.jpg;Leontodon_incanus_2.jpg;;;
 Asteraceae;Leucanthemum vulgare;L.;Leucanthemum ircutianum;Wiesen-Margerite;Leucanthemum_vulgare_1.jpg;Leucanthemum_vulgare_2.jpg;;;
 Asteraceae;Mycelis muralis;(L.) Dumort.;;Mauerlattich;Mycelis_muralis_1.jpg;Mycelis_muralis_2.jpg;;;
-Asteraceae;Taraxacum sp;F.H. Wigg;;;;;;;
 Balsaminaceae;Impatiens parviflora;DC.;;Kleines Springkraut;Impatiens_parviflora_1.jpg;Impatiens_parviflora_2.jpg;;;
 Betulaceae;Betula pendula;Roth;;Gewöhnliche Birke;Betula_pendula_1.jpg;Betula_pendula_2.jpg;;;
 Betulaceae;Corylus avellana;L.;;Haselstrauch;Corylus_avellana_1.jpg;Corylus_avellana_2.jpg;;;
@@ -71,8 +70,8 @@ Caryophyllaceae;Petrorhagia saxifraga;(L.) Link;;Steinbrech-Felsennelke;petrorha
 Caryophyllaceae;Silene nutans;L.;;Nickendes Leimkraut;silene_nutans_photo.jpg;silene_nutans_ID.png;;;
 Caryophyllaceae;Silene vulgaris;(Moench) Garcke;;Gewöhnliches Leimkraut;Silene_vulgaris_1.jpg;Silene_vulgaris_2.jpg;;;
 Celastraceae;Euonymus europaeus;L.;;Europäisches Pfaffenhütchen;Euonymus_europaeus_1.jpg;Euonymus_europaeus_2.jpg;;;
-Crassulaceae;Hylotelephium maximum;(L.) Kirschl.;Sedum telephium subsp. maximum;Große Waldfetthenne;Hylotelephium_maximum_1.jpg;Hylotelephium_maximum_2.jpg;;0.45;0.65
-Crassulaceae;Hylotelephium telephium;(L.) H. Ohba.;Sedum telephium, Sedum maximum;Große Waldfetthenne;Hylotelephium_telephium_1.jpg;Hylotelephium_telephium_2.jpg;Subsp. telephium for image 1;0.45;0.65
+Crassulaceae;Hylotelephium maximum;(L.) Kirschl.;Sedum telephium subsp. maximum;Große Waldfetthenne;Hylotelephium_maximum_1.jpg;Hylotelephium_maximum_2.jpg;;;
+Crassulaceae;Hylotelephium telephium;(L.) H. Ohba.;Sedum telephium, Sedum maximum;Große Waldfetthenne;Hylotelephium_telephium_1.jpg;Hylotelephium_telephium_2.jpg;Subsp. telephium for image 1;;
 Crassulaceae;Sedum acre;L.;;Scharfer Mauerpfeffer;sedum_acre_photo.jpg;sedum_acre_ID.png;;;
 Crassulaceae;Sedum album;L.;;Weißer Mauerpfeffer;sedum_album_photo.jpg;sedum_album_ID.png;;;
 Crassulaceae;Sedum dasyphyllum;L.;;Dickblättriger Mauerpfeffer, Buckel-Fetthenne;sedum_dasyphyllum_photo.jpg;sedum_dasyphyllum_ID.png;;;
@@ -93,14 +92,14 @@ Fabaceae;Anthyllis vulneraria;L.;;Echter Wundklee;Anthyllis_vulneraria_1.jpg;Ant
 Fabaceae;Coronilla vaginalis;Lam.;;Scheiden-Kronwicke;Coronilla_vaginalis_1.jpg;Coronilla_vaginalis_2.jpg;;;
 Fabaceae;Cytisus nigricans;L.;;Schwarzwerdender Geißklee;Cytisus_nigricans_1.jpg;Cytisus_nigricans_2.jpg;;;
 Fabaceae;Hippocrepis comosa;L.;;Hufeisenklee;Hippocrepis_comosa_1.jpg;Hippocrepis_comosa_2.jpg;;;
-Fabaceae;Hippocrepis emerus;L.;;Strauchwicke;Hippocrepis_emerus_1.jpg;Hippocrepis_emerus_2.jpg;Subsp. Lassen;0.45;0.65
+Fabaceae;Hippocrepis emerus;L.;;Strauchwicke;Hippocrepis_emerus_1.jpg;Hippocrepis_emerus_2.jpg;Subsp. Lassen;;
 Fabaceae;Jacobaea vulgaris;L.;Senecio jacobea;Jakobs Greiskraut;Jacobaea_vulgaris_1.jpg;Jacobaea_vulgaris_2.jpg;;;
 Fabaceae;Lathyrus vernus;(L.) Bernh.;;Gewöhnliche Frühlings-Platterbse;Lathyrus_vernus_1.jpg;Lathyrus_vernus_2.jpg;Subsp. Vernus;;
 Fabaceae;Lotus corniculatus;L.;; Gewöhnlicher Hornklee;Lotus_corniculatus_1.jpg;Lotus_corniculatus_2.jpg;;;
 Fabaceae;Medicago lupulina;L.;;Hopfenklee;Medicago_lupulina_1.jpg;Medicago_lupulina_2.jpg;;;
 Fagaceae;Fagus sylvatica;L.;;Rot-Buche;Fagus_sylvatica_1.jpg;Fagus_sylvatica_2.jpg;;;
 Geraniaceae;Geranium robertianum;L.;;Stinkender Storchschnabel;Geranium_robertianum_1.jpg;Geranium_robertianum_2.jpg;Subsp. Robertianum;;
-Geraniaceae;Geranium sanguineum;L.;;Blut-Storchschnabel;Geranium_sanguineum_1.jpg;Geranium_sanguineum_2.jpg;;0.45;0.65
+Geraniaceae;Geranium sanguineum;L.;;Blut-Storchschnabel;Geranium_sanguineum_1.jpg;Geranium_sanguineum_2.jpg;;;
 Grossulariaceae;Ribes alpinum;L.;;Alpen-Johannisbeere;Ribes_alpinum_1.jpg;Ribes_alpinum_2.jpg;;;
 Grossulariaceae;Ribes uva-crispa;L.;;Stachelbeere;ribes_uc_photo.jpg;ribes_uc_ID.png;;;
 Hypericaceae;Hypericum perforatum;L.;;Tüpfel-Hartheu;Hypericum_perforatum_1.jpg;Hypericum_perforatum_2.jpg;Subsp. Perforatum;;
@@ -115,8 +114,6 @@ Lamiaceae;Teucrium chamaedrys;L.;;Edel-Gamander;Teucrium_chamaedrys_1.jpg;Teucri
 Lamiaceae;Teucrium montanum;L.;;Berg-Gamander;teucrium_montanum_photo.jpg;teucrium_montanum_ID.png;;;
 Lamiaceae;Thymus praecox subsp. praecox;;;Frühblühender Thymian;thymus_praecox_praecox_photo.jpg;thymus_praecox_ID.png;;;
 Lamiaceae;Thymus pulegioides;L.;;Arznei-Thymian;thymus_pulegioides_photo.jpg;thymus_pulegioides_ID.png;;;
-Lamiaceae;Thymus pulegioides subsp. carniolicus;P.A.Schmidt;;;thymus_pulegioides_carniolus_photo.jpg;;;;
-Lamiaceae;Thymus pulegioides subsp. Pulegioides;L.;;Arznei Thymian;;Thymus_pulegioides_2.jpg;;;
 Lentibulariaceae;Pinguicula vulgaris;L.;;Gemeines Fettblatt, Echtes Fettblatt;pinguicula_vulgaris_photo.jpg;pinguicula_vulgaris_ID.png;;;
 Linaceae;Linum catharticum;L.;;Purgier-Lein;Linum_catharticum_1.jpg;Linum_catharticum_2.jpg;;;
 Onagraceae;Epilobium collinum;C. C. Gmel.;;Hügel-Weidenröschen;Epilobium_collinum_1.jpg;Epilobium_collinum_2.jpg;;;
@@ -178,19 +175,18 @@ Rubiaceae;Galium glaucum;L.;;Blaugrünes Labkraut;Galium_glaucum_1.jpg;Galium_gla
 Rubiaceae;Galium pumilum;Murray;;Niedriges Labkraut;Galium_pumilum_1.jpg;Galium_pumilum_2.jpg;;;
 Rubiaceae;Galium saxatile;L.;;Harzer Labkraut;Galium_saxatile_1.jpg;Galium_saxatile_2.jpg;;;
 Rubiaceae;Galium sylvaticum;L.;;Wald-Labkraut;Galium_sylvaticum_1.jpg;Galium_sylvaticum_2.jpg;;;
-Rubiaceae;Galium valdepilosum;Heinr. Braun;;Mährisches Labkraut;Galium_valdepilosum_1.png;;;1;0
 Rubiaceae;Galium verum;L.;;Echtes Labkraut;Galium_verum_1.jpg;Galium_verum_2.jpg;Subsp. verum;;
 Salicaceae;Populus tremula;L.;;Zitter-Pappel;Populus_tremula_1.jpg;Populus_tremula_2.jpg;;;
-Salicaceae;Salix caprea;L.;;Sal-Weide;Salix_caprea_1.jpg;Salix_caprea_2.jpg;;0.45;0.65
+Salicaceae;Salix caprea;L.;;Sal-Weide;Salix_caprea_1.jpg;Salix_caprea_2.jpg;;;
 Sapindaceae;Acer pseudoplatanus;L.;;Berg-Ahorn;Acer_pseudoplatanus_1.jpg;Acer_pseudoplatanus_2.jpg;;;
 Saxifragaceae;Chrysosplenium alternifolium;L.;;Wechselblättriges Milzkraut;Chrysosplenium_alternifolium_1.jpg;Chrysosplenium_alternifolium_2.jpg;;;
-Saxifragaceae;Saxifraga rosacea;Moench;;Rosen-Steinbrech ;saxifraga_rosaceaea_photo.jpg;saxifraga_rosacea_ID.png;;0.4;0.65
+Saxifragaceae;Saxifraga rosacea;Moench;;Rosen-Steinbrech ;saxifraga_rosaceaea_photo.jpg;saxifraga_rosacea_ID.png;;;
 Saxifragaceae;Saxifraga tridactylites;L.;;Dreifingeriger Steinbrech ;saxifraga_tridactylites_photo.jpg;saxifraga_tridactylites_ID.png;;;
 Scrophulariaceae;Verbascum lychnitis;L.;;Mehlige Königskerze;Verbascum_lychnitis_1.jpg;Verbascum_lychnitis_2.jpg;;;
 Taxaceae;Taxus baccata;L.;;Gewöhnliche Eibe;taxus_baccata_photo.jpg;taxus_baccata_ID.png;;;
 Thymelaeaceae;Helianthemum nummularium ssp. obscurum;(Celak.) Holub;;Gewöhnliches Sonnenröschen;Helianthemum_nummularium_1.jpg;Helianthemum_nummularium_2.jpg;;;
-Urticaceae;Urtica dioica;L.;;Große Brennessel;Urtica_dioica_1.jpg;Urtica_dioica_2.jpg;;0.45;0.65
-Viburnaceae;Sambucus nigra;L.;;Schwarzer Holunder;sambucus_nigra_photo.jpg;sambucus_nigra_ID.png;;0.45;0.65
+Urticaceae;Urtica dioica;L.;;Große Brennessel;Urtica_dioica_1.jpg;Urtica_dioica_2.jpg;;;
+Viburnaceae;Sambucus nigra;L.;;Schwarzer Holunder;sambucus_nigra_photo.jpg;sambucus_nigra_ID.png;;;
 Viburnaceae;Viburnum lantana;L.;;Wolliger Schneeball;viburnum_lantana_photo.jpg;viburnum_lantana_ID.png;;;
 Violaceae;Viola hirta;L.;;Behaartes Veilchen;viola_hirta_photo.jpg;viola_hirta_ID.png;;;
 Violaceae;Viola rupestris;F.W.Schmidt;;Sand-Veilchen;viola_rupestris_photo.jpg;viola_rupestris_ID.png;;;
