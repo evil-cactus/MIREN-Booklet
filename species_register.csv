@@ -46,7 +46,7 @@ Campanulaceae;Campanula rotundifolia;Campanula rotundifolia;L.;;Rundblättrige Gl
 Campanulaceae;Campanula trachelium;Campanula trachelium;L.;;Nesselblättrige Glockenblume;Campanula_trachelium_1.jpg;Campanula_trachelium_2.jpg;;;
 Brassicaceae;Cardamine flexuosa;Cardamine flexuosa;With.;;Wald-Schaumkraut;Cardamine_flexuosa_1.jpg;Cardamine_flexuosa_2.jpg;;;
 Brassicaceae;Cardamine impatiens;Cardamine impatiens;L.;;Spring-Schaumkraut;Cardamine_impatiens_1.jpg;Cardamine_impatiens_2.jpg;;;
-Brassicaceae;Cardaminopsis petraea;Arabidopsis lyrata subsp. Petraea;L.;;\textbf{ $\rightarrow$ Arabidopsis lyrata subsp. petraea};Arabidopsis_petraea_1.jpg;Arabidopsis_petraea_2.jpg;;;
+Brassicaceae;Cardaminopsis petraea;Arabidopsis lyrata subsp. petraea;L.;;\textbf{ $\rightarrow$ Arabidopsis lyrata subsp. petraea};Arabidopsis_petraea_1.jpg;Arabidopsis_petraea_2.jpg;;;
 Cyperaceae;Carex digitata;Carex digitata;L.;;Finger-Segge;Carex_digitata_1.jpg;Carex_digitata_2.jpg;;;
 Cyperaceae;Carex flacca;Carex flacca;Schreber;;Blaugrüne Segge;Carex_flacca_1.jpg;Carex_flacca_2.jpg;;;
 Cyperaceae;Carex flava;Carex flava;L. s. str.;;Gelb-Segge;Carex_flava_1.jpg;Carex_flava_2.jpg;;;
@@ -58,7 +58,7 @@ Caryophyllaceae;Cerastium tomentosum;Cerastium tomentosum;L.;;Filziges Hornkraut
 Papaveraceae;Chelidonium majus;Chelidonium majus;L.;;Schöllkraut;Chelidonum_majus_1.jpg;Chelidonum_majus_2.jpg;;;
 Saxifragaceae;Chrysosplenium alternifolium;Chrysosplenium alternifolium;L.;;Wechselblättriges Milzkraut;Chrysosplenium_alternifolium_1.jpg;Chrysosplenium_alternifolium_2.jpg;;;
 Fabaceae;Coronilla vaginalis;Coronilla vaginalis;Lam.;;Scheiden-Kronwicke;Coronilla_vaginalis_1.jpg;Coronilla_vaginalis_2.jpg;;;
-Papaveraceae;Corydalis alba (Mill.) Mansf.;Corydalis alba (Mill.) Mansf.;(Mill.) Lidén;;\textbf{ $\rightarrow$ Pseudo-fumaria alba};pseudofumaria_alba_photo.jpg;pseudofumaria_alba_ID.png;;;
+Papaveraceae;Corydalis alba (Mill.) Mansf.;Pseudo-fumaria alba;(Mill.) Lidén;;\textbf{ $\rightarrow$ Pseudo-fumaria alba};pseudofumaria_alba_photo.jpg;pseudofumaria_alba_ID.png;;;
 Betulaceae;Corylus avellana;Corylus avellana;L.;;Haselstrauch;Corylus_avellana_1.jpg;Corylus_avellana_2.jpg;;;
 Asteraceae;Cota tinctoria;Cota tinctoria;L.;;Färber-Hundskamille;Cota_tinctoria_1.jpg;Cota_tinctoria_2.jpg;;;
 Rosaceae;Cotoneaster integerrimus;Cotoneaster integerrimus;Medik.;;Kahle Steinmispel;Cotoneaster_integerrimus_1.jpg;Cotoneaster_integerrimus_2.jpg;;;
@@ -81,7 +81,7 @@ Brassicaceae;Erysimum repandum;Erysimum repandum;L.;;Spreiz-Schöterich;Erysimum_
 Celastraceae;Euonymus europaeus;Euonymus europaeus;L.;;Europäisches Pfaffenhütchen;Euonymus_europaeus_1.jpg;Euonymus_europaeus_2.jpg;;;
 Euphorbiaceae;Euphorbia cyparissias;Euphorbia cyparissias;L.;;Zypressen Wolfsmilch;Euphorbia_cyparissias_1.jpg;Euphorbia_cyparissias_2.jpg;;;
 Orobanchaceae;Euphrasia officinalis subsp. rostkoviana;Euphrasia officinalis subsp. rostkoviana;(Hayne) F. Towns.;;Gewöhnlicher Augentrost;Euphrasia_officinalis_1.jpg;Euphrasia_officinalis_2.jpg;;;
-Orobanchaceae;Euphrasia rostkoviana;Euphrasia officinalis subsp. Rostkoviana;(Hayne) F. Towns.;;\textbf{ $\rightarrow$ Euphrasia officinalis subsp. rostkoviana};Euphrasia_officinalis_1.jpg;Euphrasia_officinalis_2.jpg;;;
+Orobanchaceae;Euphrasia rostkoviana;Euphrasia officinalis subsp. rostkoviana;(Hayne) F. Towns.;;\textbf{ $\rightarrow$ Euphrasia officinalis subsp. rostkoviana};Euphrasia_officinalis_1.jpg;Euphrasia_officinalis_2.jpg;;;
 Fagaceae;Fagus sylvatica;Fagus sylvatica;L.;;Rot-Buche;Fagus_sylvatica_1.jpg;Fagus_sylvatica_2.jpg;;;
 Poaceae;Festuca altissima;Festuca altissima;All.;;Wald-Schwingel;Festuca_altissima_1.jpg;Festuca_altissima_2.jpg;;;
 Poaceae;Festuca arundinacea;Festuca arundinacea;Schreb.;;Rohr-Schwingel;Festuca_arundinacea_1.jpg;Festuca_arundinacea_2.jpg;;;

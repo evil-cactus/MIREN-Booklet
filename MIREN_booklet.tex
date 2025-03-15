@@ -17,7 +17,7 @@
 \usepackage{everypage}
 \usepackage{marginnote}
 %\usepackage{xcolor}
-C\setlength{\parindent}{0pt}
+\setlength{\parindent}{0pt}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{fp}
@@ -162,27 +162,27 @@ C\setlength{\parindent}{0pt}
 \end{longtable}
 
 % Synonyms table
-\subsection*{Synonyms}
-\begin{longtable}{|@{}p{0pt}@{}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|@{}p{0pt}@{}|}
-    \hline
-    \ &
-    \footnotesize \bfseries Synonym &
-    \footnotesize \bfseries Official name &
-    \footnotesize \bfseries Family &
-    \footnotesize \bfseries Page &
-    \ \\
-    \hline
-    \csvreader[head to column names, /csv/separator=semicolon]{synonyms_list.csv}{}{
-    	%\ifnotempty{\Synonyms}{}{
-    	\ &
-        \footnotesize{\emph{\Synonyms}} & 
-        \footnotesize{\emph{\Species}} & 
-        \footnotesize{\Family} & 
-        \footnotesize{\pagerefname{\Species}} &
-        \ \\
-        \hline%}
-    }
-\end{longtable}
+%\subsection*{Synonyms}
+%\begin{longtable}{|@{}p{0pt}@{}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|@{}p{0pt}@{}|}
+%    \hline
+%    \ &
+%    \footnotesize \bfseries Synonym &
+%    \footnotesize \bfseries Official name &
+%    \footnotesize \bfseries Family &
+%    \footnotesize \bfseries Page &
+%    \ \\
+%    \hline
+%    \csvreader[head to column names, /csv/separator=semicolon]{synonyms_list.csv}{}{
+%    	%\ifnotempty{\Synonyms}{}{
+%    	\ &
+%        \footnotesize{\emph{\Synonyms}} & 
+%        \footnotesize{\emph{\Species}} & 
+%        \footnotesize{\Family} & 
+%        \footnotesize{\pagerefname{\Species}} &
+%        \ \\
+%        \hline%}
+%    }
+%\end{longtable}
 
 	\newpage
 	
@@ -199,15 +199,15 @@ C\setlength{\parindent}{0pt}
 	
     \begin{adjustbox}{valign=m, minipage=[t][0.48\textheight][t]{\textwidth}}
     	       
-        \raggedright\nsection{\emph{\large{\Species}} \emph{\large{(\Family)}} \footnotesize{\Author}}{\Species}
+        \raggedright\nsection{\emph{\large{\Species}} \emph{\large{(\Family)}} \footnotesize{\Author} \ \normalfont\footnotesize{\emph{\Synonyms}}}{\Species}
         \raisebox{\dimexpr\topskip-\height}{\marginnote{\textcolor{\LocationColour}{\textbf{\Location}}}}
          
             \vspace{-0.8cm}
             
-            \ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}}\\}% \vspace{0.2cm}}
+            %\ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}}\\}% \vspace{0.2cm}}
             \ifnotempty{\Comments}{}{\footnotesize{\Comments}}%\vspace{0.2cm}}
             
-            \ifnotempty{\Synonyms}{\setlength{\heightone}{0pt}}{\setlength{\heightone}{1em}}
+            %\ifnotempty{\Synonyms}{\setlength{\heightone}{0pt}}{\setlength{\heightone}{1em}}
             \ifnotempty{\Comments}{\setlength{\heighttwo}{0pt}}{\setlength{\heighttwo}{1em}}
             
             
