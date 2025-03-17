@@ -15,7 +15,7 @@ Woodsiaceae;Woodsia ilvensis;(L.) R. Br.;;Rostroter Wimperfarn;Woodsia_ilvensis_
 Amaryllidaceae;Allium lusitanicum;Lam.;Allium senescens;Berg-Lauch;Allium_lusitanicum_1.jpg;Allium_lusitanicum_2.jpg;;;
 Amaryllidaceae;Allium oleraceum;L.;;Gemüse-Lauch;Allium_oleraceum_1.jpg;Allium_oleraceum_2.jpg;;;
 Apiaceae;Bupleurum falcatum;L.;;Sichelblättriges Hasenohr;Bupleurum_falcatum_1.jpg;Bupleurum_falcatum_2.jpg;Subsp. faclatum for left image;;
-Apiaceae;Pimpinella saxifraga;L.;;Gewöhnliche Kleine Bibernelle ;pimpinella_saxifraga_photo.jpg;pimpinella_saxifraga_ID.png;;0.4;0.6
+Apiaceae;Pimpinella saxifraga;L.;;Gewöhnliche Kleine Bibernelle ;pimpinella_saxifraga_photo.jpg;pimpinella_saxifraga_ID.png;;;
 Apiaceae;Seseli libanotis;(L.) W. D. J. Koch;Libanotis pyrenaica;Berg-Heilwurz;Seseli_libanotis_1.jpg;Seseli_libanotis_2.jpg;;;
 Apocynaceae;Vincetoxicum hirundinaria;Medik.;;Weiße Schwalbenwurz;vincetoxicum_hirundinaria_photo.png;vincetoxicum_hirundinaria_ID.png;;;
 Araliaceae;Hedera helix;L.;;Gewöhnlicher Efeu;Hedera_helix_1.jpg;Hedera_helix_2.jpg;;;
@@ -29,13 +29,13 @@ Asteraceae;Erigeron acris ssp. acris;L.;;Scharfes Berufkraut;Erigeron_acris_1.jp
 Asteraceae;Erigeron annuus ssp. annuus ; (L.) Desf.;;Gewöhnliches Einjähriges Berufkraut;Erigeron_annuus_1.jpg;Erigeron_annuus_2.jpg;Left image not subspecies;;
 Asteraceae;Hieracium bifidum;;;Gabeliges Habichtskraut;Hieracium_bifidum_1.jpg;Hieracium_bifidum_2.jpg;;;
 Asteraceae;Hieracium bupleuroides ;C. C. Gmel.;;Hasenohr-Habichtskraut;Hieracium_bupleuroides_1.jpg;Hieracium_bupleuroides_2.jpg;;;
-Asteraceae;Hieracium calodon;Tausch;Pilosella auriculoides;Pannonisches Mausohrhabichtskraut;Hieracium_calodon_1.jpg;;;;
+Asteraceae;Hieracium calodon;Tausch;Pilosella auriculoides;Pannonisches Mausohrhabichtskraut;Hieracium_calodon_1.jpg;;;0.8;
 Asteraceae;Hieracium franconicum;(Griseb.) Zahn;;Fränkisches Habichtskraut;Hieracium_franconicum_1.jpg;Hieracium_franconicum_2.jpg;;;
 Asteraceae;Hieracium harzianum;Zahn;;Ehrenbürg-Habichtskraut;Hieracium_harzianum_1.jpg;Hieracium_harzianum_descr.png;;;
 Asteraceae;Hieracium murorum agg.;L.;;Wald-Habichtskraut;Hieracium_murorum_1.jpg;Hieracium_murorum_2.jpg;;;
 Asteraceae;Hieracium pilosella;L.;Pilosella officinarum;Mausohrhabichtskraut;Hieracium_pilosella_1.jpg;Hieracium_pilosella_2.jpg;;;
 Asteraceae;Hieracium schmidtii;aggr.;;Bleiches Habichtskraut;Hieracium_schmidtii_1.jpg;Hieracium_schmidtii_2.jpg;;;
-Asteraceae;Hieracium schneidii;Schack et Zahn;;Schneid-Habichtskraut;Hieracium_schneidii_1.png;;;0.62;
+Asteraceae;Hieracium schneidii;Schack et Zahn;;Schneid-Habichtskraut;Hieracium_schneidii_1.png;;;0.8;
 Asteraceae;Lactuca perennis;L.;;Blauer Lattich;Lactuca_perennis_1.jpg;Lactuca_perennis_2.jpg;;;
 Asteraceae;Leontodon incanus;(L.) Schrank;;Grauer Löwenzahn;Leontodon_incanus_1.jpg;Leontodon_incanus_2.jpg;;;
 Asteraceae;Leucanthemum vulgare;L.;Leucanthemum ircutianum;Wiesen-Margerite;Leucanthemum_vulgare_1.jpg;Leucanthemum_vulgare_2.jpg;;;
