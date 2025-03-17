@@ -191,34 +191,41 @@
 	\csvreader[head to column names, /csv/separator=semicolon]{species_list.csv}{}{
 	
 	 \newcommand{\customheight}{}
-	 \newlength{\heightone} % Define \heightone as a length
-	 \newlength{\heighttwo} % Define \heighttwo as a length
+	 \newlength{\heightzero} % For linebreaks in author
+	 \newlength{\heightone} % For linebreaks in synonyms
+	 \newlength{\heighttwo} % For linebreaks in comments	 
 
 	\IfStrEq{\FigOneWidth}{}{\renewcommand{\WidthOne}{0.5\textwidth}}{\renewcommand{\WidthOne}{\FigOneWidth\textwidth}}
 	\IfStrEq{\FigTwoWidth}{}{\renewcommand{\WidthTwo}{0.5\textwidth}}{\renewcommand{\WidthTwo}{\FigTwoWidth\textwidth}}
 	
     \begin{adjustbox}{valign=m, minipage=[t][0.48\textheight][t]{\textwidth}}
     	       
-        \raggedright\nsection{\emph{\large{\Species}} \emph{\large{(\Family)}} \footnotesize{\Author} \ \normalfont\footnotesize{\emph{\Synonyms}}}{\Species}
+        \raggedright\nsection{\emph{\large{\Species}} \emph{\large{(\Family)}} \footnotesize{\Author} \ \normalfont\footnotesize{\emph{\Synonyms}} \ \normalfont\footnotesize{\Comments}}{\Species}
         \raisebox{\dimexpr\topskip-\height}{\marginnote{\textcolor{\LocationColour}{\textbf{\Location}}}}
          
             \vspace{-0.8cm}
             
             %\ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}}\\}% \vspace{0.2cm}}
-            \ifnotempty{\Comments}{}{\footnotesize{\Comments}}%\vspace{0.2cm}}
+            %\ifnotempty{\Comments}{}{\footnotesize{\Comments}}%\vspace{0.2cm}}
             
             %\ifnotempty{\Synonyms}{\setlength{\heightone}{0pt}}{\setlength{\heightone}{1em}}
-            \ifnotempty{\Comments}{\setlength{\heighttwo}{0pt}}{\setlength{\heighttwo}{1em}}
+            %\ifnotempty{\Comments}{\setlength{\heighttwo}{0pt}}{\setlength{\heighttwo}{1em}}
             
-            
+		%\IfSubStr{\Comments}{\\}{
+        %	\setlength{\heighttwo}{0pt}}{\setlength{\heighttwo}{1em}}{}
+        
+        \IfSubStr{\Synonyms}{\\}{\setlength{\heightzero}{1em}}{}		            
+		\IfSubStr{\Synonyms}{\\}{\setlength{\heightone}{1em}}{}
+        \IfSubStr{\Comments}{\\}{\setlength{\heighttwo}{1em}}{}
+        
         \vfill
-        \renewcommand{\customheight}{\dimexpr\textheight-0.48\textheight-1em-\heightone-\heighttwo\relax}
+        \renewcommand{\customheight}{\dimexpr\textheight-0.48\textheight-1em-\heightzero-\heightone-\heighttwo\relax}
     \begin{adjustbox}{minipage=[t][\customheight][t]{\textwidth}}
     	\begin{minipage}{\WidthOne}
     		\centering
     		\vspace{0.1cm}
             \includegraphics[
-            height=0.9\customheight, 
+            height=0.92\customheight, 
             width=\textwidth, 
             keepaspectratio]{Images/\FileNamePhoto}
         \end{minipage}
@@ -227,7 +234,7 @@
         	\centering
         	\vspace{0.1cm}
             \includegraphics[
-            height=0.9\customheight, 
+            height=0.92\customheight, 
             width=\textwidth, 
             keepaspectratio]{Images/\FileNameID}
         \end{minipage}

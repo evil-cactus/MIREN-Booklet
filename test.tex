@@ -1,0 +1,316 @@
+\documentclass[a5paper,10pt,twoside]{book}
+\usepackage{geometry}
+\usepackage{csvsimple}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{zref-savepos}
+\usepackage[latin9]{inputenc}
+\usepackage{supertabular}
+\geometry{a5paper, inner=1.5cm, outer=0.3cm, top=0.5cm, bottom=1.1cm}
+\usepackage{xstring}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{ifthen}
+\usepackage{titleps}
+\usepackage{everypage}
+\usepackage{marginnote}
+%\usepackage{xcolor}
+\setlength{\parindent}{0pt}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{fp}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{minitoc}
+%page numbering 
+\usepackage{fancyhdr} %page numbering 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[LE,RO]{\vspace{-0.5cm}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+
+% Dot fill
+\usepackage{calc}
+\newlength{\mylength}
+\setlength{\mylength}{\hsize-2\tabcolsep-4\arrayrulewidth}
+
+% Create new commands for table of contents
+\newcommand*{\nsection}[2]{
+	\section*{#1}
+	\StrSubstitute{#2}{}{_}[\Temp]
+	\label{\Temp}
+	\addcontentsline{toc}{section}{#2}
+}
+
+\newcommand*{\hiddensection}[2]{
+	%\section*{}
+	\StrSubstitute{#2}{}{_}[\Temp]
+	\label{\Temp}
+	\addcontentsline{toc}{section}{#1}
+}
+
+% Trick supercols
+\makeatletter
+\let\mcnewpage=\newpage
+\newcommand{\TrickSupertabularIntoMulticols}{%
+\renewcommand\newpage{%
+    \if@firstcolumn%
+        \hrule width\linewidth height0pt%
+            \columnbreak%
+        \else%
+          \mcnewpage%
+        \fi%
+}%
+}
+\makeatother
+
+
+% Create new command to get page reference for each species for TOC
+\newcommand*{\pagerefname}[1]{
+	 \StrSubstitute{#1}{}{_}[\TempName]
+	 \pageref{\TempName} 
+ }
+
+	 
+% Create new command to handle empty cells
+\newcommand{\ifnotempty}[3]{%
+    \edef\tempcontent{#1}% Fully expand #1 and store it in \tempcontent
+    \ifx\tempcontent\empty% Compare \tempcontent with \empty
+        \expandafter\expandafter\expandafter#2% Execute #2 (empty case)
+    \else
+        \expandafter\expandafter\expandafter#3% Execute #3 (non-empty case)
+    \fi
+}
+
+%\newcommand{\ifnotempty}[3]{%
+%    \begingroup
+%    \edef\tempcontent{#1}% Store content in a temporary macro
+%    \ifx\tempcontent\empty
+%        #2% Code to execute if #1 is empty
+%    \else
+%        #3% Code to execute if #1 is not empty
+%    \fi
+%    \endgroup
+%}
+
+% Create new default height and width
+\newcommand{\defaultheight}{\0.5\textheight}
+
+% Center wide figures
+\makeatletter
+
+\newcommand*{\centerfloat}{%
+  \parindent \z@
+  \leftskip \z@ \@plus 1fil \@minus \textwidth
+  \rightskip\leftskip
+  \parfillskip \z@skip}
+\makeatother
+
+% Trim spaces
+\newcommand{\trimspaces}[1]{\StrTrim{#1}{\mytemp}\mytemp}
+
+\newcommand{\filltopageendgraphics}[2][]{%
+  \par
+  \zsaveposy{top-\thepage}% Mark the top of the page
+  \vfill
+  \zsaveposy{bottom-\thepage}% Mark the bottom of the page
+  \smash{%
+    \includegraphics[
+      height=\dimexpr\zposy{top-\thepage}sp-\zposy{bottom-\thepage}sp\relax,
+      width=\textwidth,
+      keepaspectratio,
+      #1
+    ]{#2}%
+  }%
+  \par
+}
+
+
+
+% Document begins here
+\begin{document}
+	\input{booklet_title.tex}
+	
+	\thispagestyle{empty}
+	%\cleardoublepage
+	
+	%\clearpage
+	\pagenumbering{arabic}	
+
+	% Table of contents
+	\section*{Species list}
+    \begin{longtable}{|@{}p{0pt}@{}|>{\raggedright\arraybackslash}p{.32\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.27\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|@{}p{0pt}@{}|}
+    \hline
+    \ &
+    \footnotesize \bfseries Species &
+    \footnotesize \bfseries Family &
+    \footnotesize \bfseries Local name &
+    \footnotesize \bfseries Page &
+    \ \\
+    \hline
+    \csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{
+    	\ &
+        \footnotesize{\emph{\SpeciesDisplayed}} & 
+        \footnotesize{\emph{\Family}} & 
+        \footnotesize{\LocalName} & 
+        \footnotesize{\pagerefname{\SpeciesOfficial}} &
+        \ \\
+        \hline
+    }
+\end{longtable}
+
+% Synonyms table
+%\subsection*{Synonyms}
+%\begin{longtable}{|@{}p{0pt}@{}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.30\textwidth}|>{\raggedright\arraybackslash}p{.18\textwidth}|>{\raggedright\arraybackslash}p{.06\textwidth}|@{}p{0pt}@{}|}
+%    \hline
+%    \ &
+%    \footnotesize \bfseries Synonym &
+%    \footnotesize \bfseries Official name &
+%    \footnotesize \bfseries Family &
+%    \footnotesize \bfseries Page &
+%    \ \\
+%    \hline
+%    \csvreader[head to column names, /csv/separator=semicolon]{synonyms_list.csv}{}{
+%    	%\ifnotempty{\Synonyms}{}{
+%    	\ &
+%        \footnotesize{\emph{\Synonyms}} & 
+%        \footnotesize{\emph{\Species}} & 
+%        \footnotesize{\Family} & 
+%        \footnotesize{\pagerefname{\Species}} &
+%        \ \\
+%        \hline%}
+%    }
+%\end{longtable}
+
+	\newpage
+	
+	% Iterate over species_list.csv 	 
+	 
+	\csvreader[head to column names, /csv/separator=semicolon]{species_list.csv}{}{
+	
+	 \newcommand{\customheight}{}
+	 \newlength{\heightone} % Define \heightone as a length
+	 \newlength{\heighttwo} % Define \heighttwo as a length
+	 
+	 \StrLen{\Species}[\lengthSpec]
+     \StrLen{\Family}[\lengthFam]
+     \StrLen{\Author}[\lengthAuth]
+     	\setlength{\lengAuthScaled}{\lengthAuth pt}
+		\setlength{\lengAuthScaled}{0.8\lengAuthScaled} 
+     \StrLen{\Synonyms}[\lengthSyn]  
+     	\setlength{\lengthSynScaled}{\lengthSyn pt}
+		\setlength{\lengthSynScaled}{0.8\lengthSynScaled} 
+     \StrLen{\Comments}[\lengthCom]  
+     	\setlength{\lengthComScaled}{\lengthCom pt}
+		\setlength{\lengthComScaled}{0.8\lengthComScaled} 
+	 \newcounter{TotalLength}
+     \setcounter{TotalLength}{\lengthSpec} 
+     \addtocounter{TotalLength}{\lengthFam}
+     \addtocounter{TotalLength}{\dimexpr\lengthAuth pt\relax}
+     \newcounter{ExtraLength}
+     \setcounter{ExtraLength}{\lengthSpec} 
+     \addtocounter{ExtraLength}{\lengthFam}
+     \addtocounter{ExtraLength}{\dimexpr\lengthAuth pt\relax}
+     \addtocounter{ExtraLength}{\dimexpr\lengthSyn pt\relax}
+     \addtocounter{ExtraLength}{\dimexpr\lengthCom pt\relax}
+
+	\IfStrEq{\FigOneWidth}{}{\renewcommand{\WidthOne}{0.5\textwidth}}{\renewcommand{\WidthOne}{\FigOneWidth\textwidth}}
+	\IfStrEq{\FigTwoWidth}{}{\renewcommand{\WidthTwo}{0.5\textwidth}}{\renewcommand{\WidthTwo}{\FigTwoWidth\textwidth}}
+	
+    \begin{adjustbox}{valign=m, minipage=[t][0.48\textheight][t]{\textwidth}}
+        
+        \ifnum\value{ExtraLength}<\dimexpr\LineWidth-10\relax	
+    		\raggedright\nsection{\emph{\large{\Species}} \emph{\large{(\Family)}} \footnotesize{\Author} \ \normalfont\footnotesize{\emph{\Synonyms}} WHEE}{\Species}
+    		\theExtraLength
+        
+		\else
+			\raggedright\nsection{\emph{\large{\Species}} \emph{\large{(\Family)}} \footnotesize{\Author}}{\Species}
+        \vspace{-0.2cm}
+        \ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}}\\}% \vspace{0.2cm}}
+        \ifnotempty{\Comments}{}{\footnotesize{\Comments}}%\vspace{0.2cm}}
+        
+        \ifnotempty{\Synonyms}{\setlength{\heightone}{0pt}}{\setlength{\heightone}{1em}}
+        \ifnotempty{\Comments}{\setlength{\heighttwo}{0pt}}{\setlength{\heighttwo}{1em}}
+        
+		\fi
+         
+	\raisebox{\dimexpr\topskip-\height}{\marginnote{\textcolor{\LocationColour}{\textbf{\Location}}}}         
+         
+            %\vspace{-0.8cm}
+            \vspace{-0.6cm}
+            
+            %\ifnotempty{\Synonyms}{}{\footnotesize{\emph{\Synonyms}}\\}% \vspace{0.2cm}}
+            %%\ifnotempty{\Comments}{}{\footnotesize{\Comments}}%\vspace{0.2cm}}
+            %length of string = \theTotalLength
+
+            
+            %\ifnotempty{\Synonyms}{\setlength{\heightone}{0pt}}{\setlength{\heightone}{1em}}
+            %%\ifnotempty{\Comments}{\setlength{\heighttwo}{0pt}}{\setlength{\heighttwo}{1em}}
+            
+            
+        \vfill
+        \renewcommand{\customheight}{\dimexpr\textheight-0.48\textheight-1em-\heightone-\heighttwo\relax}
+    \begin{adjustbox}{minipage=[t][\customheight][t]{\textwidth}}
+    	\begin{minipage}{\WidthOne}
+    		\centering
+    		\vspace{0.1cm}
+            \includegraphics[
+            height=0.9\customheight, 
+            width=\textwidth, 
+            keepaspectratio]{Images/\FileNamePhoto}
+        \end{minipage}
+       	 \hfill       	 
+        \begin{minipage}{\WidthTwo}
+        	\centering
+        	\vspace{0.1cm}
+            \includegraphics[
+            height=0.9\customheight, 
+            width=\textwidth, 
+            keepaspectratio]{Images/\FileNameID}
+        \end{minipage}
+    \end{adjustbox}
+   	 \vfill
+    \end{adjustbox}
+    %\vspace{0.1cm}
+}
+
+% Iterate over special_pages.csv
+
+\clearpage
+\csvreader[head to column names, /csv/separator=semicolon, trim spaces=true]{special_pages.csv}{}{
+\IfStrEq{\MaxHeight}{0.5}{\renewcommand{\SpecialHeight}{0.49\textheight}}{\renewcommand{\SpecialHeight}{\MaxHeight\textheight}}
+	\centerfloat
+    \begin{adjustbox}{minipage=[t][\SpecialHeight][t]{\MaxWidth\textwidth}}
+    \IfStrEq{\detokenize{\ColD}}{}{}{
+    }{\hiddensection{\ColD}{\ColD}}
+
+               \makebox[\textwidth][c]{\includegraphics[
+                height=\SpecialHeight,
+                width=\MaxWidth\textwidth,
+                keepaspectratio
+            ]{Images/\FileName}}
+            \vspace{0.1cm}
+
+         \hfill
+    \end{adjustbox}
+}
+
+% Species register
+%\newpage
+%\section*{Species register}
+%
+%\begin{multicols}{2}
+%\TrickSupertabularIntoMulticols
+%\begin{supertabular}{>{\raggedright\arraybackslash}p{0.4\textwidth} >{\raggedright\arraybackslash}p{0.06\textwidth}}
+%\csvreader[head to column names, /csv/separator=semicolon]{species_register.csv}{}{
+%    \footnotesize{\emph{\Species}}\dotfill & 
+%    \footnotesize{\pagerefname{\Species}} \tabularnewline
+%}
+%\end{supertabular}
+%
+%
+%\end{multicols}
+
+\end{document}
