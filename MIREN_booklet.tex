@@ -1,4 +1,4 @@
-\documentclass[a5paper,10pt,twoside]{book}
+\documentclass[a5paper,10pt,twoside]{book} %twoside, openany
 \usepackage{geometry}
 \usepackage{csvsimple}
 \usepackage{graphicx}
@@ -29,7 +29,6 @@
 \fancyhf{}
 \fancyfoot[LE,RO]{\vspace{-0.5cm}\thepage}
 \renewcommand{\headrulewidth}{0pt}
-
 
 % Dot fill
 \usepackage{calc}
@@ -84,17 +83,6 @@
     \fi
 }
 
-%\newcommand{\ifnotempty}[3]{%
-%    \begingroup
-%    \edef\tempcontent{#1}% Store content in a temporary macro
-%    \ifx\tempcontent\empty
-%        #2% Code to execute if #1 is empty
-%    \else
-%        #3% Code to execute if #1 is not empty
-%    \fi
-%    \endgroup
-%}
-
 % Create new default height and width
 \newcommand{\defaultheight}{\0.5\textheight}
 
@@ -128,12 +116,13 @@
 }
 
 
-
 % Document begins here
 \begin{document}
 	\input{booklet_title.tex}
 	
 	\thispagestyle{empty}
+	
+	
 	%\cleardoublepage
 	
 	%\clearpage
@@ -161,7 +150,7 @@
     }
 \end{longtable}
 \vspace{-0.87cm} % little cheat to patch over extra line after table hehe
-\includegraphics[width=\textwidth]{Images/blank.png}
+\includegraphics[width=\textwidth]{Logos/blank.png}
 
 
 % Synonyms table

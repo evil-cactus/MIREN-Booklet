@@ -26,10 +26,9 @@
         }	
 \end{adjustbox}	
 
-\end{titlepage}
+\newpage
 \thispagestyle{empty}
-\begin{titlepage}
-		\csvreader[no head, head to column names, /csv/separator=semicolon]{booklet_title.csv}{1=\Property,2=\Value}{
+\csvreader[no head, head to column names, /csv/separator=semicolon]{booklet_title.csv}{1=\Property,2=\Value}{
 		\centering
 		\IfEq{\Property}{Title}{\Large\Value}{}\\
 		\vspace{0.5 cm}
@@ -46,4 +45,5 @@
 		\IfEq{\Property}{Source4}{\raggedright \vspace{-0.5cm}\small \Value}{}
 			
 	}
+
 \end{titlepage}
